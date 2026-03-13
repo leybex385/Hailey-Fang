@@ -1600,15 +1600,15 @@
         }
 
         .media-card-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(201, 169, 98, 0.9), rgba(201, 169, 98, 0.7));
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border: 2px solid var(--accent-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: -35px auto 1.5rem;
-            border: 3px solid var(--primary-light);
+            margin: -30px auto 1.5rem;
             transition: var(--transition);
             position: relative;
             z-index: 6;
@@ -1616,11 +1616,11 @@
 
         .media-card:hover .media-card-icon {
             background: var(--accent-gold);
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1);
         }
 
         .media-card-icon i {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary-dark);
             transition: var(--transition);
         }
@@ -1671,20 +1671,57 @@
 
         .media-showcase {
             text-align: center;
-            margin-top: 4rem;
+            margin-top: 6rem;
+            padding: 0 5%;
         }
 
-        .media-showcase img {
-            max-width: 800px;
+        .showcase-card {
+            position: relative;
+            max-width: 1000px;
             margin: 0 auto;
-            border-radius: 4px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
         }
 
-        .media-showcase img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        .showcase-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 6rem 3rem 3rem;
+            background: linear-gradient(transparent, rgba(10, 10, 10, 0.95));
+            color: var(--primary-light);
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .showcase-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+            font-weight: 400;
+        }
+
+        .showcase-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .showcase-card:hover img {
+            transform: scale(1.05);
         }
 
         /* --- MEDIA MODAL --- */
@@ -1760,13 +1797,13 @@
         .media-modal-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, rgba(201, 169, 98, 0.9), rgba(201, 169, 98, 0.7));
+            background: var(--primary-light);
+            border: 3px solid var(--accent-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: -65px auto 2rem;
-            border: 4px solid var(--primary-light);
             position: relative;
             z-index: 10;
         }
@@ -1838,12 +1875,46 @@
 
         /* --- CONTACT (CLEANER VERSION) --- */
         .contact {
-            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.85)), url('contact-bg.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            position: relative;
+            background: #0a0a0a;
             color: var(--primary-light);
             padding: 8rem 5%;
+            overflow: hidden;
+        }
+
+        .contact-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .contact-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(10px) brightness(0.4);
+            transform: scale(1.1);
+            /* Prevent blur edges from showing */
+        }
+
+        .contact::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.4);
+            z-index: 2;
+        }
+
+        .contact-header,
+        .contact-container {
+            position: relative;
+            z-index: 3;
         }
 
         .contact-header {
@@ -2498,8 +2569,7 @@
             <div class="brand-values">
                 <div class="brand-value-card" onclick="openBrandValueModal('craftsmanship')">
                     <div class="brand-value-image">
-                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&h=400&fit=crop"
-                            alt="Artisan Craftsmanship">
+                        <img src="brand-craftsmanship.png" alt="Artisan Craftsmanship">
                     </div>
                     <div class="brand-value-icon">
                         <i class="fas fa-medal"></i>
@@ -2516,8 +2586,7 @@
 
                 <div class="brand-value-card" onclick="openBrandValueModal('sustainable')">
                     <div class="brand-value-image">
-                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop"
-                            alt="Sustainable Practices">
+                        <img src="brand-sustainable.png" alt="Sustainable Practices">
                     </div>
                     <div class="brand-value-icon">
                         <i class="fas fa-leaf"></i>
@@ -2534,8 +2603,7 @@
 
                 <div class="brand-value-card" onclick="openBrandValueModal('global')">
                     <div class="brand-value-image">
-                        <img src="https://images.unsplash.com/photo-1526304640152-d4619684e484?w=600&h=400&fit=crop"
-                            alt="Global Reach">
+                        <img src="brand-global.png" alt="Global Reach">
                     </div>
                     <div class="brand-value-icon">
                         <i class="fas fa-globe"></i>
@@ -2552,8 +2620,7 @@
 
                 <div class="brand-value-card" onclick="openBrandValueModal('customer')">
                     <div class="brand-value-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop"
-                            alt="Customer First">
+                        <img src="brand-customer.png" alt="Customer First">
                     </div>
                     <div class="brand-value-icon">
                         <i class="fas fa-heart"></i>
@@ -2603,8 +2670,7 @@
         <div class="media-grid">
             <div class="media-card" onclick="openMediaModal('awards')">
                 <div class="media-card-image">
-                    <img src="https://images.unsplash.com/photo-1579762593175-202260549619?w=600&h=400&fit=crop"
-                        alt="Industry Awards">
+                    <img src="media-awards.png" alt="Industry Awards">
                 </div>
                 <div class="media-card-icon">
                     <i class="fas fa-trophy"></i>
@@ -2621,8 +2687,7 @@
 
             <div class="media-card" onclick="openMediaModal('media')">
                 <div class="media-card-image">
-                    <img src="https://images.unsplash.com/photo-1586899028174-e7098604235b?w=600&h=400&fit=crop"
-                        alt="Media Features">
+                    <img src="media-press.png" alt="Media Features">
                 </div>
                 <div class="media-card-icon">
                     <i class="fas fa-newspaper"></i>
@@ -2639,8 +2704,7 @@
 
             <div class="media-card" onclick="openMediaModal('charity')">
                 <div class="media-card-image">
-                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop"
-                        alt="Charity Partnerships">
+                    <img src="media-charity.png" alt="Charity Partnerships">
                 </div>
                 <div class="media-card-icon">
                     <i class="fas fa-heart"></i>
@@ -2657,8 +2721,17 @@
         </div>
 
         <div class="media-showcase">
-            <img src="https://image.qwenlm.ai/public_source/5b702b02-fc69-4bff-8ed1-c889343e34df/119ff8f93-f77f-4872-bd90-270f5afbf8c5.png"
-                alt="Charity Event">
+            <div class="showcase-card">
+                <img src="media-showcase.png" alt="Hailey Fang - CharityVision Charity Gala">
+                <div class="showcase-overlay">
+                    <h3 class="showcase-title">A Catalyst for Change</h3>
+                    <p class="showcase-description">
+                        Hailey Fang at the "Force for Good" CharityVision gala. Beyond the world of couture, our mission
+                        is to restore vision and empower lives. Every collection supports our commitment to
+                        international vision restoration initiatives and community outreach.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2680,6 +2753,13 @@
 
     <!-- Contact Information (CLEANER - NO FORM) -->
     <section class="contact" id="contact">
+        <div class="contact-video-container">
+            <video autoplay muted loop playsinline poster="contact-bg.png">
+                <source
+                    src="https://player.vimeo.com/external/494252666.sd.mp4?s=72ad57a58265675d0a6e67cf799868bd98993563&profile_id=165"
+                    type="video/mp4">
+            </video>
+        </div>
         <div class="contact-header">
             <p class="contact-subtitle">Get In Touch</p>
             <h2 class="contact-title">Contact Us</h2>
@@ -2821,7 +2901,7 @@
         // Brand Value Modal Data
         const brandValueModalData = {
             craftsmanship: {
-                image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900&h=600&fit=crop',
+                image: 'brand-craftsmanship.png',
                 icon: 'fa-medal',
                 title: 'Artisan Craftsmanship',
                 description: 'Every piece is meticulously crafted with attention to detail, honoring traditional techniques while embracing modern innovation. Our artisans bring decades of experience to create garments that stand the test of time.',
@@ -2833,7 +2913,7 @@
                 ]
             },
             sustainable: {
-                image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&h=600&fit=crop',
+                image: 'brand-sustainable.png',
                 icon: 'fa-leaf',
                 title: 'Sustainable Practices',
                 description: 'We prioritize eco-friendly materials and ethical production processes to minimize our environmental impact. Sustainability is woven into every aspect of our brand.',
@@ -2845,7 +2925,7 @@
                 ]
             },
             global: {
-                image: 'https://images.unsplash.com/photo-1526304640152-d4619684e484?w=900&h=600&fit=crop',
+                image: 'brand-global.png',
                 icon: 'fa-globe',
                 title: 'Global Reach',
                 description: 'From Los Angeles to the world, we connect with customers worldwide through our online channels and partnerships. Fashion knows no borders.',
@@ -2857,7 +2937,7 @@
                 ]
             },
             customer: {
-                image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&h=600&fit=crop',
+                image: 'brand-customer.png',
                 icon: 'fa-heart',
                 title: 'Customer First',
                 description: 'Dedicated support and personalized service ensure every customer feels valued and understood. Your satisfaction is our top priority.',
@@ -2873,7 +2953,7 @@
         // Media Modal Data
         const mediaModalData = {
             awards: {
-                image: 'https://images.unsplash.com/photo-1579762593175-202260549619?w=900&h=600&fit=crop',
+                image: 'media-awards.png',
                 icon: 'fa-trophy',
                 title: 'Industry Awards',
                 description: 'Our commitment to innovation and excellence has been recognized through prestigious industry awards. We continue to push boundaries in fusion design and sustainable fashion practices.',
@@ -2885,7 +2965,7 @@
                 ]
             },
             media: {
-                image: 'https://images.unsplash.com/photo-1586899028174-e7098604235b?w=900&h=600&fit=crop',
+                image: 'media-press.png',
                 icon: 'fa-newspaper',
                 title: 'Media Features',
                 description: 'Our collections and brand story have been featured in leading fashion publications and international design magazines, showcasing our unique approach to modern fashion.',
@@ -2897,7 +2977,7 @@
                 ]
             },
             charity: {
-                image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=900&h=600&fit=crop',
+                image: 'media-charity.png',
                 icon: 'fa-heart',
                 title: 'Charity Partnerships',
                 description: 'We believe in giving back to the community. Our charity partnerships focus on vision restoration initiatives and supporting underprivileged communities through fashion education.',
