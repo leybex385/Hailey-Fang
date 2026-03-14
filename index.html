@@ -4,7 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOT JUST A LABEL | Hailey Fang - U.S. Regional Director</title>
+    <title>Hailey Fang | Personal Portfolio</title>
+    <meta name="description" content="Personal portfolio of Hailey Fang - U.S. Regional Director, fashion expert, and leader in Eastern Aesthetics × Western Tailoring.">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Hailey Fang Portfolio">
+    <meta property="og:title" content="Hailey Fang | Personal Portfolio">
+    <meta property="og:description" content="Explore the professional journey and collections of Hailey Fang, bridging Eastern heritage with modern fashion excellence.">
+    <meta property="og:image" content="preview-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter / Telegram -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hailey Fang | Personal Portfolio">
+    <meta name="twitter:description" content="Explore the professional journey and collections of Hailey Fang.">
+    <meta name="twitter:image" content="preview-image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1544,7 +1560,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
             max-width: 1200px;
-            margin: 0 auto 4rem;
+            margin: 0 auto;
         }
 
         .media-card {
@@ -1671,7 +1687,7 @@
 
         .media-showcase {
             text-align: center;
-            margin-top: 6rem;
+            margin-bottom: 6rem;
             padding: 0 5%;
         }
 
@@ -1740,6 +1756,28 @@
         }
 
         .media-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Collection Modal Specific Styles */
+        .collection-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 5001;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .collection-modal.active {
             display: flex;
             opacity: 1;
         }
@@ -2248,7 +2286,7 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="logo">NOT JUST <span>A LABEL</span></div>
+        <div class="logo">Hailey <span>Fang</span></div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#designer">Designer</a></li>
@@ -2667,6 +2705,20 @@
                 partnerships that reflect our values and vision.</p>
         </div>
 
+        <div class="media-showcase">
+            <div class="showcase-card">
+                <img src="media-showcase.png" alt="Hailey Fang - CharityVision Charity Gala">
+                <div class="showcase-overlay">
+                    <h3 class="showcase-title">A Catalyst for Change</h3>
+                    <p class="showcase-description">
+                        Hailey Fang at the "Force for Good" CharityVision gala. Beyond the world of couture, our mission
+                        is to restore vision and empower lives. Every collection supports our commitment to
+                        international vision restoration initiatives and community outreach.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <div class="media-grid">
             <div class="media-card" onclick="openMediaModal('awards')">
                 <div class="media-card-image">
@@ -2719,20 +2771,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="media-showcase">
-            <div class="showcase-card">
-                <img src="media-showcase.png" alt="Hailey Fang - CharityVision Charity Gala">
-                <div class="showcase-overlay">
-                    <h3 class="showcase-title">A Catalyst for Change</h3>
-                    <p class="showcase-description">
-                        Hailey Fang at the "Force for Good" CharityVision gala. Beyond the world of couture, our mission
-                        is to restore vision and empower lives. Every collection supports our commitment to
-                        international vision restoration initiatives and community outreach.
-                    </p>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Media Modal -->
@@ -2747,6 +2785,22 @@
                 <h3 class="media-modal-title" id="mediaModalTitle"></h3>
                 <p class="media-modal-description" id="mediaModalDescription"></p>
                 <div class="media-modal-details" id="mediaModalDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collection Modal -->
+    <div class="collection-modal" id="collectionModal">
+        <div class="media-modal-content">
+            <span class="media-modal-close" onclick="closeCollectionModal()">&times;</span>
+            <img class="media-modal-image" id="collectionModalImage" src="" alt="">
+            <div class="media-modal-body">
+                <div class="media-modal-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3 class="media-modal-title" id="collectionModalTitle"></h3>
+                <p class="media-modal-description" id="collectionModalDescription"></p>
+                <div class="media-modal-details" id="collectionModalDetails" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-style: italic; color: var(--accent-gold);"></div>
             </div>
         </div>
     </div>
@@ -2782,7 +2836,7 @@
                         <i class="fas fa-envelope"></i>
                         <div class="contact-item-text">
                             <h5>Email</h5>
-                            <p>lil608071@gmail.com</p>
+                            <p>notalabel@haileyfang.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -2808,7 +2862,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>NOT JUST <span>A LABEL</span></h3>
+                <h3>Hailey <span>Fang</span></h3>
                 <p>Fusion of Eastern aesthetics and Western tailoring, reinterpreting traditional elements through
                     modern design.</p>
             </div>
@@ -2824,19 +2878,42 @@
             <div class="footer-links">
                 <h4>Collections</h4>
                 <ul>
-                    <li><a href="#">Spring 2024</a></li>
-                    <li><a href="#">Fall 2024</a></li>
-                    <li><a href="#">Couture</a></li>
-                    <li><a href="#">Ready-to-Wear</a></li>
+                    <li><a href="javascript:void(0)" onclick="openCollectionModal('spring')">Spring 2024</a></li>
+                    <li><a href="javascript:void(0)" onclick="openCollectionModal('fall')">Fall 2024</a></li>
+                    <li><a href="javascript:void(0)" onclick="openCollectionModal('couture')">Couture</a></li>
+                    <li><a href="javascript:void(0)" onclick="openCollectionModal('readytowear')">Ready-to-Wear</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 NOT JUST A LABEL. All Rights Reserved. | Designed with Excellence</p>
+            <p>&copy; 2026 Hailey Fang. All Rights Reserved. | Designed with Excellence</p>
         </div>
     </footer>
 
     <script>
+        console.log('Main script execution started');
+        // Global Modal Logic First
+        function openCollectionModal(type) {
+            console.log('Attempting to open collection modal:', type);
+            const modal = document.getElementById('collectionModal');
+            const data = collectionModalData[type];
+            if (!data) return;
+
+            document.getElementById('collectionModalImage').src = data.image;
+            document.getElementById('collectionModalTitle').textContent = data.title;
+            document.getElementById('collectionModalDescription').textContent = data.description;
+            document.getElementById('collectionModalDetails').textContent = data.details;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            console.log('Collection modal opened successfully');
+        }
+
+        function closeCollectionModal() {
+            document.getElementById('collectionModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
         // Philosophy Modal Data
         const philosophyModalData = {
             eastern: {
@@ -2990,6 +3067,34 @@
             }
         };
 
+        // Collection Modal Data
+        const collectionModalData = {
+            spring: {
+                image: 'collection-spring-2024.png',
+                title: 'Spring 2024: Blossom of Youth',
+                description: 'A vibrant celebration of new beginnings, blending hand-painted Eastern florals with modern avant-garde silhouettes. This collection captures the essence of spring through delicate silk and innovative fabric techniques.',
+                details: 'Key Elements: Hand-Painted Florals, Asymmetrical Silk Cuts, Pastel Heritage Palette'
+            },
+            fall: {
+                image: 'collection-fall-2024.png',
+                title: 'Fall 2024: Imperial Legacy',
+                description: 'A regal exploration of legacy and power. Deep imperial velvets meet structured Western tailoring, creating a sophisticated silhouette for the modern lunar-inspired evening.',
+                details: 'Key Elements: Imperial Velvet, Gold Embroidery, Structured Capes'
+            },
+            couture: {
+                image: 'collection-couture.png',
+                title: 'Couture: The Masterpiece',
+                description: 'The pinnacle of artisan craftsmanship. Each piece in our Couture collection is a unique work of art, featuring thousands of hand-applied beads and intricate textures that flow like liquid.',
+                details: 'Key Elements: Bespoke Craftsmanship, Hand-Beading, Limited Edition Artistry'
+            },
+            readytowear: {
+                image: 'collection-ready-to-wear.png',
+                title: 'Ready-to-Wear: Urban Zen',
+                description: 'Effortless elegance for the contemporary global citizen. Our Ready-to-Wear line offers versatile, stylish pieces that transition seamlessly from corporate boardrooms to creative urban spaces.',
+                details: 'Key Elements: Tailored Minimalism, Breathable Eco-Fabrics, Multi-Functional Styling'
+            }
+        };
+
         // Open Philosophy Modal
         function openPhilosophyModal(type) {
             const modal = document.getElementById('philosophyModal');
@@ -3118,6 +3223,7 @@
             const portfolioModal = document.getElementById('portfolioModal');
             const brandValueModal = document.getElementById('brandValueModal');
             const mediaModal = document.getElementById('mediaModal');
+            const collectionModal = document.getElementById('collectionModal');
 
             if (event.target == philosophyModal) {
                 closePhilosophyModal();
@@ -3131,6 +3237,9 @@
             if (event.target == mediaModal) {
                 closeMediaModal();
             }
+            if (event.target == collectionModal) {
+                closeCollectionModal();
+            }
         }
 
         // Close modals with Escape key
@@ -3140,6 +3249,7 @@
                 closePortfolioModal();
                 closeBrandValueModal();
                 closeMediaModal();
+                closeCollectionModal();
             }
         });
 
